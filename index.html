@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+        <h1>Bank Website</h1>
+    </center>
+    <h2 style="text-align: left;">Welcome <span id="accName"></span></h2>
+    <center>
+        <h2>Transaction History</h2>
+        <div class="accfrom1">
+            Enter Account Number:
+            <input type="text" name="accfrom" id="accfrom">
+        </div>
+        <div class="btn-back">
+            <button class="btn" onclick="displayData()">Display</button>
+        </div>
+        <div id="TransactionData" style="text-align: left;"></div>
+    </center>
+    <script src="script.js"></script>
+</body>
+</html>

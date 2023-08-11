@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <!-- navbar to be made here -->
+    </nav>
+    <div class="container">
+        <div class="form-tab">
+            <button id="login-tab" class="active" onclick="switchTab('login')">Login</button>
+            <button id="register-tab" onclick="switchTab('register')">Register</button>
+        </div>
+        <main>
+            <div id="login-form" class="form-section">
+                <h2>Login</h2>
+                <p>Name:</p>
+                <input type="text" name="txtUserName" id="txtUserName">
+                <br>
+                <br>
+                <p>Password:</p>
+                <input type="password" name="txtUserPassword" id="txtUserPassword">
+                <br>
+                <br>
+                <div class="btn-back">
+                    <button class="btn" onclick="readData()">Login</button>
+                </div>
+            </div>
+
+            <div id="register-form" class="form-section">
+                <h2>Register</h2>
+                <p>Account Number:</p>
+                <input type="text" name="txtAccount" id="txtAccount">
+                <br>
+                <br>
+                <p>Name:</p>
+                <input type="text" name="txtName" id="txtName">
+                <br>
+                <br>
+                <p>Password:</p>
+                <input type="password" name="txtPassword" id="txtPassword">
+                <br>
+                <br>
+                <p>Email:</p>
+                <input type="email" name="txtEmail" id="txtEmail">
+                <br>
+                <br>
+                <p>Contact:</p>
+                <input type="text" name="txtContact" id="txtContact">
+                <br>
+                <br>
+                <div class="btn-back">
+                    <button class="btn" onclick="insertData()">Register</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>

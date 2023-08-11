@@ -1,0 +1,68 @@
+body {
+    background-color: orange;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    background-color: rgb(65, 65, 103);
+    margin: 10vh 25vw;
+    padding: 20px;
+    color: white;
+}
+
+.btn-back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-tab {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-tab button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    color: rgb(173, 171, 171);
+}
+
+.form-tab button.active {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+}
+
+#register-form {
+    display: none;
+}
