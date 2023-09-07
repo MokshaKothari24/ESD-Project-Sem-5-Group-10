@@ -65,6 +65,43 @@ function readData() {
         .catch(error => console.log('error', error));
 }
 
+function transfer() {
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    
+    // Get values from input fields
+    let senderAccount = parseInt(document.getElementById('txtAccFrom').value);
+    let receiverAccount = parseInt(document.getElementById('txtAccTo').value);
+    let amount = parseFloat(document.getElementById('txtAmount').value);
+
+
+    // Create the request body
+    var raw = JSON.stringify({
+        "senderAccount": senderAccount,
+        "receiverAccount": receiverAccount,
+        "amount": amount
+    });
+
+    var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    fetch("http://localhost:3000/transfer", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            if (result) {
+                alert("Transfer Successful");
+            } else {
+                alert("Invalid Account From");
+            }
+        })
+        .catch(error => console.log('error', error));
+}
+
+
 function displayData() {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');

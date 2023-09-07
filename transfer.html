@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+        <h1>Bank Website</h1>
+    </center>
+    <h2 style="text-align: left;">Welcome <span id="accName"></span></h2>
+    <div class="container">
+        <div id="login-form">
+            <h2>Transfer</h2>
+            <p>Account From:</p>
+            <input type="text" name="txtAccFrom" id="txtAccFrom">
+            <br>
+            <br>
+            <p>Account To:</p>
+            <input type="text" name="txtAccTo" id="txtAccTo">
+            <br>
+            <br>
+            <p>Amount :</p>
+            <input type="text" name="txtAmount" id="txtAmount">
+            <br>
+            <br>
+            <div class="btn-back">
+                <button class="btn" onclick="transfer()">Transfer</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
