@@ -17,19 +17,24 @@
         <div id="login-form">
             <h2>Transfer</h2>
             <p>Account From:</p>
-            <input type="text" name="txtAccFrom" id="txtAccFrom">
+            <input type="text" name="txtAccFrom" id="txtAccFrom" required>
             <br>
             <br>
             <p>Account To:</p>
-            <input type="text" name="txtAccTo" id="txtAccTo">
+            <input type="text" name="txtAccTo" id="txtAccTo" required>
             <br>
             <br>
             <p>Amount :</p>
-            <input type="text" name="txtAmount" id="txtAmount">
+            <input type="number" name="txtAmount" id="txtAmount" required>
+            <br>
+            <br>
+            <p>Schedule Your Payment Transfer: </p>
+            <input type="datetime-local" name="scheduledTime" id="scheduledTime" placeholder="Scheduled Time">
             <br>
             <br>
             <div class="btn-back">
                 <button class="btn" onclick="transfer()">Transfer</button>
+                <button class="btn" onclick="scheduledtransfer()">Scheduled Transfer</button>
             </div>
         </div>
     </div>

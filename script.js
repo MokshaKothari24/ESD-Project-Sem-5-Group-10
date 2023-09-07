@@ -101,6 +101,30 @@ function transfer() {
         .catch(error => console.log('error', error));
 }
 
+function scheduledtransfer() {
+    const scheduledTime = document.getElementById('scheduledTime').value;
+    let senderAccount = parseInt(document.getElementById('txtAccFrom').value);
+    let receiverAccount = parseInt(document.getElementById('txtAccTo').value);
+    let amount = parseFloat(document.getElementById('txtAmount').value);
+
+    // Send a POST request to your backend with the scheduled time and other data
+    fetch('http://localhost:3000/schedule-transaction', { // Update the URL to match your backend endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ senderAccount, receiverAccount, amount, scheduledTime })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        // Handle the response from the server
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 
 function displayData() {
     var myHeaders = new Headers();

@@ -1,4 +1,5 @@
 const express = require("express");
+const schedule = require('node-schedule');
 
 const app = express();
 
@@ -103,7 +104,7 @@ async function updateAmount(senderAccount, receiverAccount, amount) {
         }
 
         // Check if sender has enough balance
-        if (senderDoc.balance >= amount) {
+        if (parseInt(senderDoc.balance) >= 900) {
             // Calculate updated balances
             const senderBalanceAfterTransfer = senderDoc.balance - amount;
             const receiverBalanceAfterTransfer = parseInt(receiverDoc.balance) + parseInt(amount);
@@ -154,31 +155,6 @@ async function updateAmount(senderAccount, receiverAccount, amount) {
     }
 }
 
-
-
-app.post("/transfer", (req, res) => {
-    const { senderAccount, receiverAccount, amount } = req.body; // Extract data from request body
-
-    if (!senderAccount || !receiverAccount || !amount) {
-        return res.status(400).json({ error: "Invalid request data" });
-    }
-
-    updateAmount(senderAccount, receiverAccount, amount)
-        .then(() => {
-            res.json({ message: "Transfer successful" });
-        })
-        .catch((err) => {
-            res.status(500).json({ error: "Internal Server Error" });
-        });
-});
-
-
-// Example usage:
-// Assuming you have senderAccount, receiverAccount, and amount from your request
-// Call the function to update balances
-
-
-
 async function displayRecord(req, res) {
     const client = new MongoClient(url);
     try {
@@ -205,6 +181,8 @@ async function displayRecord(req, res) {
     }
 }
 
+
+
 app.get("/", (req, res) => {
     res.send("Hello");
 });
@@ -218,13 +196,48 @@ app.post("/login", (req, res) => {
     readDocument(req, res);
 });
 
-// app.post("/transfer", (req, res) => {
-//     updateAmount(senderAccount, receiverAccount, amount);
-// });
 
 app.post("/history", (req, res) => {
     displayRecord(req, res);
 });
+
+app.post("/transfer", (req, res) => {
+    const { senderAccount, receiverAccount, amount } = req.body; // Extract data from request body
+
+    if (!senderAccount || !receiverAccount || !amount) {
+        return res.status(400).json({ error: "Invalid request data" });
+    }
+
+    updateAmount(senderAccount, receiverAccount, amount)
+        .then(() => {
+            res.json({ message: "Transfer successful" });
+        })
+        .catch((err) => {
+            res.status(500).json({ error: "Internal Server Error" });
+        });
+});
+
+// Route to schedule a transaction
+app.post("/schedule-transaction", (req, res) => {
+    const { senderAccount, receiverAccount, amount, scheduledTime } = req.body;
+
+    if (!senderAccount || !receiverAccount || !amount || !scheduledTime) {
+        return res.status(400).json({ error: "Invalid request data" });
+    }
+
+    // Parse the scheduledTime as a JavaScript Date object
+    const scheduledDate = new Date(scheduledTime);
+
+    // Schedule the transaction
+    const job = schedule.scheduleJob(scheduledDate, () => {
+        // Perform the transaction when the scheduled time is reached
+        updateAmount(senderAccount, receiverAccount, amount);
+
+        // Respond to the client
+        res.json({ message: "Transaction scheduled successfully" });
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
