@@ -1,44 +1,56 @@
+#register-form {
+    display: none;
+} 
+
 body {
-    background-color: orange;
+    background-color: #f4f4f4; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #ffffff; 
+    margin: 10vh auto;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
     text-align: center;
+    color: #333; 
 }
 
-.container {
-    background-color: rgb(65, 65, 103);
-    margin: 10vh 25vw;
-    padding: 20px;
-    color: white;
-}
-
-.btn-back{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+nav {
+    background-color: #0033a0; 
+    padding: 10px 0;
 }
 
 .btn {
-    padding: 10px;
-    border-radius: 25px;
-    background-color: black;
-    color: white;
+    padding: 10px 20px;
+    border: none;
+    background-color: #0033a0;
+    color: #fff; 
+    border-radius: 5px;
     cursor: pointer;
 }
 
-input {
-    padding: 5px;
-    border-radius: 20px;
+.btn:hover {
+    background-color: #001f66; 
 }
 
-.form-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="datetime-local"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
 }
 
 .form-tab {
@@ -51,18 +63,36 @@ input {
     padding: 10px 20px;
     border: none;
     background-color: transparent;
+    color: #333;
     cursor: pointer;
     outline: none;
     font-size: 16px;
-    color: rgb(173, 171, 171);
 }
 
 .form-tab button.active {
-    color: white;
+    color: #0033a0; 
     font-weight: bold;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #0033a0; 
 }
 
-#register-form {
-    display: none;
+#accName {
+    color: #0033a0; 
+    font-weight: bold;
+}
+
+#TransactionData {
+    background-color:white; 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #0033a0; 
+    overflow: hidden;
+    padding: 20px;
+    text-decoration: none;
+    color: #fff; 
+    height: 10px;
 }

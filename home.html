@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Thakur Bank</title>
+    <style>
+        /* Reset some default styles for a cleaner look */
+        body,
+        h1,
+        h2,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Define global styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        /* Services section styles */
+        .services {
+            background-color: #f0f0f0;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        /* Why Choose Us section styles */
+        .why-choose-us {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        /* Contact section styles */
+        .contact {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        /* Footer section styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Media queries for responsiveness (you can add more as needed) */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="bank-logo.png" alt="Thakur Bank Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Personal Banking</a></li>
+                <li><a href="#">Business Banking</a></li>
+                <li><a href="#">Digital Banking</a></li>
+                <li><a href="#">Investment Solutions</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to Thakur Bank</h1>
+            <p>Your Trusted Financial Partner</p>
+            <a href="#" class="cta-button">Open an Account</a>
+            <a href="#" class="cta-button">Find a Branch</a>
+        </div>
+        <div class="hero-image">
+            <img src="bank-building.jpg" alt="Bank Building">
+        </div>
+    </section>
+    <section class="services">
+        <!-- Add content for services here -->
+    </section>
+    <section class="why-choose-us">
+        <!-- Add content for "Why Choose Us" here -->
+    </section>
+    <section class="contact">
+        <!-- Add contact information here -->
+    </section>
+    <section class="footer">
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Accessibility</a></li>
+            </ul>
+            <div class="social-media">
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <p>&copy; 2023 Thakur Bank. All Rights Reserved.</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 style="text-align: left;">Welcome <span id="accName"></span></h2>
+    <nav>
+        <div class="navbar">
+               <a href="" style="color: white;text-decoration: none;">Login/Register</a>
+               <a href="" style="color: white;text-decoration: none">Transfer</a>
+               
+        
+        </div>
+    </nav>
+    <h2 style="text-align:center;">Welcome to Thakur Bank! <span id="accName"></span></h2>
     <center>
+        <div class="container">
         <h2>Transaction History</h2>
         <div class="accfrom1">
             Enter Account Number:
@@ -18,6 +27,7 @@
             <button class="btn" onclick="displayData()">Display</button>
         </div>
         <div id="TransactionData" style="text-align: left;"></div>
+    </div>
     </center>
     <script src="script.js"></script>
 </body>
