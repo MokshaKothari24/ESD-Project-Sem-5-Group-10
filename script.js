@@ -249,7 +249,7 @@ function verifyOTP() {
             console.log(result);
         })
         .catch(error => console.log("error", error));
-    
+
     return result;
 }
 
@@ -272,17 +272,27 @@ function generatePDF() {
 
     // Make an AJAX request to the server to trigger PDF generation
     fetch("http://localhost:3000/statement", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-
-            // Assuming the server responds with a success message
-            if (result.message === "PDF generated successfully") {
-                // You can display a success message or handle it as needed
-                alert("PDF generated successfully");
+        .then(response => {
+            if (response.ok) {
+                return response.blob(); // Parse the response as a Blob (PDF file)
             } else {
-                alert("PDF generation failed");
+                throw new Error('PDF generation failed');
             }
         })
-        .catch(error => console.log("error", error));
+        .then(blob => {
+            // Create a URL for the Blob (PDF) and open it in a new window for download
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${account}_account_statement.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("PDF generation failed");
+        });
+
 }

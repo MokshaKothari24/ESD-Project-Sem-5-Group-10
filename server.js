@@ -282,7 +282,7 @@ async function authenticate(req, res) {
     return generatedotp; // Return the OTP for further verification
 }
 
-function generateAccountStatement(transactions, fileName) {
+function generateAccountStatement(transactions, fileName, callback) {
     const doc = new PDFDocument();
     const outputStream = fs.createWriteStream(fileName);
 
@@ -293,6 +293,7 @@ function generateAccountStatement(transactions, fileName) {
     doc.info.Author = 'Thakur Bank';
 
     // Add a title to the document
+    doc.fontSize(18).text('Thakur Bank', { align: 'center' });
     doc.fontSize(18).text('Account Statement', { align: 'center' });
     doc.moveDown();
 
@@ -309,19 +310,17 @@ function generateAccountStatement(transactions, fileName) {
     // Finalize the PDF
     doc.end();
 
-    
     outputStream.on('finish', () => {
-        let result = 'PDF generated successfully';
-        console.log(result);
-        return result;    
+        console.log('PDF generated successfully');
+        callback(null, 'PDF generated successfully'); // Call the callback with success message
     });
-    
+
     outputStream.on('error', (err) => {
-        let result = 'Error generating PDF.';
         console.error('Error generating PDF:', err);
-        return result;
+        callback(err, 'Error generating PDF.'); // Call the callback with error message
     });
 }
+
 
 
 
@@ -364,16 +363,31 @@ app.post('/statement', async (req, res) => {
         const result = await collection.find(filter).toArray();
         console.log("Displayed document:", result);
         const filePath = path.join(__dirname, `account_statement.pdf`);
-        let output = generateAccountStatement(result, filePath);
 
-        res.send(output);
+        // Call the modified generateAccountStatement function with a callback
+        generateAccountStatement(result, filePath, (err, message) => {
+            if (err) {
+                console.error('PDF generation failed:', err);
+                res.status(500).send('PDF generation failed');
+            } else {
+                console.log(message);
+                res.download(filePath, 'account_statement.pdf', (downloadErr) => {
+                    if (downloadErr) {
+                        console.error('Error while sending the file:', downloadErr);
+                        res.status(500).send('Error while sending the file');
+                    }
+                });
+            }
+        });
     } catch (err) {
         console.error("Error:", err);
+        res.status(500).send('Error');
     } finally {
         await client.close();
         console.log("Disconnected from the database");
     }
-})
+});
+
 
 app.post("/history", (req, res) => {
     displayRecord(req, res);
