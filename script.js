@@ -1,3 +1,33 @@
+function delData() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let name = document.getElementById('txtUserName').value
+    let password = document.getElementById('txtUserPassword').value
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "name": name,
+        "password": password
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("http://localhost:3000/delete", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            alert(result);
+        })
+        .catch(error => console.log('error', error));
+}
+
 function insertData() {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -29,7 +59,7 @@ function insertData() {
         })
         .catch(error => console.log("error", error));
 
-    window.location.href= "index.html";
+    window.location.href = "index.html";
 }
 
 function readData() {
@@ -37,10 +67,12 @@ function readData() {
     myHeaders.append('Content-Type', 'application/json');
     let name = document.getElementById('txtUserName').value;
     let password = document.getElementById('txtUserPassword').value;
+    let otp = document.getElementById('txtUserOTP').value;
 
     var raw = JSON.stringify({
         "name": name,
         "password": password,
+        "otp": otp
     });
 
     var requestOptions = {
@@ -54,9 +86,9 @@ function readData() {
         .then(response => response.json())
         .then(result => {
 
-            if(result) {
+            if (result) {
                 alert("Login Successful");
-                window.location.href="./index.html";
+                window.location.href = "./index.html";
             }
             else {
                 alert("Invalid username or password")
@@ -68,7 +100,7 @@ function readData() {
 function transfer() {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    
+
     // Get values from input fields
     let senderAccount = parseInt(document.getElementById('txtAccFrom').value);
     let receiverAccount = parseInt(document.getElementById('txtAccTo').value);
@@ -115,14 +147,14 @@ function scheduledtransfer() {
         },
         body: JSON.stringify({ senderAccount, receiverAccount, amount, scheduledTime })
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        // Handle the response from the server
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            // Handle the response from the server
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 
@@ -156,7 +188,7 @@ function displayData() {
                     <br>Balance: ${element.balance}
                     <hr>
                 `;
-                
+
                 // Append the transaction entry to the container
                 document.getElementById("TransactionData").innerHTML += transactionHTML;
             });
@@ -188,4 +220,69 @@ function switchTab(tabName) {
 
 function changePageTitle(newPageTitle) {
     document.title = newPageTitle;
+}
+
+
+function verifyOTP() {
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    let name = document.getElementById('txtUserName').value;
+    let password = document.getElementById('txtUserPassword').value;
+    let email = document.getElementById('txtUserEmail').value;
+
+    var raw = JSON.stringify({
+        "name": name,
+        "password": password,
+        "email": email
+    });
+
+    var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    fetch("http://localhost:3000/verify", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => console.log("error", error));
+    
+    return result;
+}
+
+// Function to generate PDF on button click
+function generatePDF() {
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    let account = document.getElementById('accfrom').value;
+
+    var raw = JSON.stringify({
+        'account': account
+    });
+
+    var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    // Make an AJAX request to the server to trigger PDF generation
+    fetch("http://localhost:3000/statement", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+
+            // Assuming the server responds with a success message
+            if (result.message === "PDF generated successfully") {
+                // You can display a success message or handle it as needed
+                alert("PDF generated successfully");
+            } else {
+                alert("PDF generation failed");
+            }
+        })
+        .catch(error => console.log("error", error));
 }

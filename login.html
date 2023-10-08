@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="navbar">
-               <a href="" style="color: white;text-decoration: none;">Transfer</a>
-               <a href="" style="color: white;text-decoration: none">History</a>
-               
-        
+            <a href="" style="color: white;text-decoration: none;">Transfer</a>
+            <a href="" style="color: white;text-decoration: none">History</a>
+
+
         </div>
     </nav>
     <div class="container">
@@ -31,8 +33,18 @@
                 <input type="password" name="txtUserPassword" id="txtUserPassword">
                 <br>
                 <br>
+                <p>Email:</p>
+                <input type="email" name="txtUserEmail" id="txtUserEmail">
+                <br>
+                <br>
+                <p>OTP:</p>
+                <input type="number" name="txtUserOTP" id="txtUserOTP">
+                <br>
+                <br>
                 <div class="btn-back">
                     <button class="btn" onclick="readData()">Login</button>
+                    <button class="btn" onclick="delData()">Delete</button>
+                    <button class="btn" onclick="verifyOTP()">Generate OTP</button>
                 </div>
             </div>
 
@@ -66,4 +78,5 @@
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>
