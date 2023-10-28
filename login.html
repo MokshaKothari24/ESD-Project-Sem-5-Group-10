@@ -9,14 +9,19 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navbar">
-            <a href="" style="color: white;text-decoration: none;">Transfer</a>
-            <a href="" style="color: white;text-decoration: none">History</a>
-
-
-        </div>
-    </nav>
+    <header>
+        <nav>
+          <div class="logo">
+            <img src="images/bank_logo.png" alt="Thakur Bank Logo" />
+          </div>
+          <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Transaction History</a></li>
+            <li><a href="login.html">Login/Register</a></li>
+            <li><a href="transfer.html">Transfer</a></li>
+          </ul>
+        </nav>
+      </header>
     <div class="container">
         <div class="form-tab">
             <button id="login-tab" class="active" onclick="switchTab('login')">Login</button>
@@ -76,6 +81,10 @@
             </div>
         </main>
     </div>
+    <section class="footer">
+        
+        <p>&copy; 2023 Thakur Bank. All Rights Reserved.</p>
+      </section>
 </body>
 <script src="script.js"></script>
 

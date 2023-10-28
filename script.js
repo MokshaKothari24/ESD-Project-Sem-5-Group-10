@@ -88,7 +88,7 @@ function readData() {
 
             if (result) {
                 alert("Login Successful");
-                window.location.href = "./index.html";
+                window.location.href = "./home.html";
             }
             else {
                 alert("Invalid username or password")
