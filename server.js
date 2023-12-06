@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
 const path = require('path');
-const cors = require("cors"); 
+const cors = require("cors");
 
 let generatedotp;
 
